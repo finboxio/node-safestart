@@ -3,6 +3,7 @@ var ngu = require('normalize-git-url')
 
 // dependency match git urls
 function dependencyMatch(expected, actual) {
+
     // expand github:user/repo#hash to git://github.com/...
     if (expected.indexOf('github:') === 0) {
         expected = expected.replace(/^github:/, 'git://github.com/')
@@ -15,6 +16,8 @@ function dependencyMatch(expected, actual) {
     actual = actual.replace(/^git\+https/, 'git')
     expected = expected.replace(/^git\+https/, 'git')
 
+    var expected_has_hash = ~expected.indexOf('#')
+
     expected = ngu(expected)
     actual = ngu(actual)
 
@@ -25,7 +28,7 @@ function dependencyMatch(expected, actual) {
         return false
     }
 
-    if (actual.branch && actual.branch.indexOf(expected.branch) !== 0) {
+    if (actual.branch && actual.branch.indexOf(expected.branch) !== 0 && expected_has_hash) {
         return false
     }
 
