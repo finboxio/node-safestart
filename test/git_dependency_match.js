@@ -26,14 +26,14 @@ describe('gitDependencyMatch', function() {
         ))
     })
 
-    test('should not reject when urls match but no hash provided in expected', function() {
+    test('should match when repos match and head is implicit', function() {
         assert(gitDependencyMatch(
             'git://github.com/defunctzombie/uniq.git',
             'git+https://github.com/defunctzombie/uniq.git#36a99d1c57f4c34164393439de8e75b165f2dc2d'
         ))
     })
 
-    test('should not match when urls mismatch and no hash provided in expected', function() {
+    test('should not match when repos mismatch and head is implicit', function() {
         assert(!gitDependencyMatch(
             'git://github.com/defunctzombie/uniq.git',
             'git+https://github.com/loriopatrick/uniq.git#36a99d1c57f4c34164393439de8e75b165f2dc2d'
