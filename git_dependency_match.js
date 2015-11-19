@@ -15,7 +15,7 @@ function dependencyMatch(expected, actual) {
     actual = actual.replace(/^git\+https/, 'git')
     expected = expected.replace(/^git\+https/, 'git')
 
-    var expected_has_hash = ~expected.indexOf('#')
+    var explicit_head = url.parse(expected).hash
 
     expected = ngu(expected)
     actual = ngu(actual)
@@ -27,7 +27,7 @@ function dependencyMatch(expected, actual) {
         return false
     }
 
-    if (actual.branch && actual.branch.indexOf(expected.branch) !== 0 && expected_has_hash) {
+    if (actual.branch && actual.branch.indexOf(expected.branch) !== 0 && explicit_head) {
         return false
     }
 
