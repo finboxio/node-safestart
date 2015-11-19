@@ -3,7 +3,6 @@ var ngu = require('normalize-git-url')
 
 // dependency match git urls
 function dependencyMatch(expected, actual) {
-
     // expand github:user/repo#hash to git://github.com/...
     if (expected.indexOf('github:') === 0) {
         expected = expected.replace(/^github:/, 'git://github.com/')
