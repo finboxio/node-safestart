@@ -1,18 +1,18 @@
 {
-  "name": "safestart",
-  "version": "0.8.0",
+  "name": "finboxio-safestart",
+  "version": "1.0.0",
   "description": "Checks if everything is up to date",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/marcello3d/node-safestart.git"
+    "url": "git://github.com/finboxio/node-safestart.git"
   },
   "engines": {
     "node": ">=0.8"
   },
   "dependencies": {
-    "normalize-git-url": "1.0.1",
-    "semver": "4.2.0"
+    "normalize-git-url": "3.0.1",
+    "semver": "5.1.0"
   },
   "bin": {
     "safestart": "./bin/safestart"
@@ -30,6 +30,6 @@
   "license": "zlib",
   "readmeFilename": "Readme.md",
   "devDependencies": {
-    "mocha": "2.2.5"
+    "mocha": "2.3.4"
   }
 }
