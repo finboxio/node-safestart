@@ -1,6 +1,10 @@
 
-1.0.0 / 2016-01-09
-==================
+# 1.1.0 (2016-02-06)
+
+  * Merge branch 'master' of https://github.com/finboxio/node-safestart
+  * accept literally any dependency version (doesn't have to follow semver semantics) if expected version is *
+
+# 1.0.0 (2016-01-09)
 
   * upgrade packages
   * better test names
