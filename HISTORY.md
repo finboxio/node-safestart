@@ -1,3 +1,13 @@
+
+1.0.0 / 2016-01-09
+==================
+
+  * upgrade packages
+  * better test names
+  * more accurate match
+  * remove extra newline
+  * ignore git branch mismatches when expected url has implicit head
+
 # 0.8.0 (2015-07-29)
 
   * @mblakele: add support for file: dependencies
