@@ -21,10 +21,10 @@ function checkPath(basePath) {
     packageJson = packages[packageJsonPath] = JSON.parse(fs.readFileSync(packageJsonPath))
 
     if ((packageJson.engineStrict || packageJson['engine-strict']) && packageJson.engines) {
-        if (packageJson.engines.node && !semver.satisfies(process.version, packageJson.engines.node)) {
+        if (packageJson.engines.node && !semver.satisfies(process.version, packageJson.engines.node) && packageJson.engines.node !== '*') {
             throw new Error(packageJson.name + " node version mismatch (expected: " + packageJson.engines.node + ", got: " + process.version + ")")
         }
-        if (packageJson.engines.iojs && !semver.satisfies(process.version, packageJson.engines.iojs)) {
+        if (packageJson.engines.iojs && !semver.satisfies(process.version, packageJson.engines.iojs) && packageJson.engines.node !== '*') {
             throw new Error(packageJson.name + " iojs version mismatch (expected: " + packageJson.engines.iojs + ", got: " + process.version + ")")
         }
     }
@@ -73,7 +73,7 @@ function scanDependencies(packageJson, basePath, dependencies, required) {
                 fail(packageJson, dependencyName, dependencyPath, expectedVersion, dependency._resolved)
             }
 
-        } else if (!/latest/.test(expectedVersion) && !semver.satisfies(dependency.version, expectedVersion, true)) {
+        } else if (!/latest/.test(expectedVersion) && !semver.satisfies(dependency.version, expectedVersion, true) && expectedVersion !== '*') {
             fail(packageJson, dependencyName, dependencyPath, expectedVersion, dependency.version)
         }
     })
